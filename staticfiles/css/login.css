@@ -1,0 +1,363 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* Body */
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#0f4c81,#2c7be5,#00c6ff);
+
+    overflow:hidden;
+
+}
+
+/* Main Container */
+
+.container{
+
+    width:1100px;
+
+    height:650px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    border:1px solid rgba(255,255,255,.2);
+
+}
+/* ===========================
+   LEFT SIDE
+=========================== */
+
+.left-side{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:60px;
+
+    color:white;
+
+}
+
+.left-side h1{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.left-side h2{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.left-side p{
+
+    font-size:18px;
+
+    line-height:30px;
+
+    color:#f1f1f1;
+
+    max-width:400px;
+
+}
+/* ===========================
+   RIGHT SIDE
+=========================== */
+
+.right-side{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+/* ===========================
+   LOGIN CARD
+=========================== */
+
+.login-card{
+
+    width:420px;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+    transition:.4s;
+
+}
+
+.login-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.login-card h2{
+
+    text-align:center;
+
+    color:#0f4c81;
+
+    margin-bottom:30px;
+
+    font-size:32px;
+
+}
+
+
+/* ===========================
+   INPUT BOX
+=========================== */
+
+.input-box{
+
+    position:relative;
+
+    margin-bottom:22px;
+
+}
+
+.input-box i{
+
+    position:absolute;
+
+    left:15px;
+
+    top:16px;
+
+    color:#0f4c81;
+
+    font-size:18px;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:15px 15px 15px 48px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.input-box input:focus{
+
+    border-color:#0f4c81;
+
+    box-shadow:0 0 10px rgba(15,76,129,.25);
+
+}
+/* ===========================
+   OPTIONS
+=========================== */
+
+.options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+
+}
+
+.options label{
+
+    color:#555;
+
+}
+
+.options a{
+
+    text-decoration:none;
+
+    color:#0f4c81;
+
+    font-weight:600;
+
+}
+
+.options a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ===========================
+   LOGIN BUTTON
+=========================== */
+
+.login-btn{
+
+    width:100%;
+
+    background:linear-gradient(135deg,#0f4c81,#1565c0);
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(15,76,129,.35);
+
+}
+
+
+/* ===========================
+   REGISTER LINK
+=========================== */
+
+.register-text{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#555;
+
+}
+
+.register-text a{
+
+    color:#0f4c81;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+}
+
+.register-text a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+    .container{
+
+        flex-direction:column;
+
+        width:95%;
+
+        height:auto;
+
+    }
+
+    .left-side{
+
+        text-align:center;
+
+        align-items:center;
+
+        padding:40px;
+
+    }
+
+    .right-side{
+
+        width:100%;
+
+        padding:30px;
+
+    }
+
+    .login-card{
+
+        width:100%;
+
+    }
+
+}
