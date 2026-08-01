@@ -1,23 +1,27 @@
-# SECURITY WARNING: keep the secret key used in production secret!
 from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 import os
 from dotenv import load_dotenv
 
+# Base Directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env
 load_dotenv()
 
+# Security
 SECRET_KEY = os.getenv('django-insecure-ir@yc(-wqu-stx=p4(-92=be!akb_2h&ucz(_l&y)k6mh=*xe%')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
+    ".onrender.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://medical-rag-ai-lyvg.onrender.com",
+]
 
 # Application definition
 
@@ -30,8 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'medical',
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,9 +65,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -74,9 +74,7 @@ DATABASES = {
     }
 }
 
-
 # Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,9 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -105,16 +101,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Static Files
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
+STATIC_URL = "/static/"
 
-STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "medical" / "static",
 ]
-STATIC_URL = "static/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Media Files
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# Default primary key field type
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
