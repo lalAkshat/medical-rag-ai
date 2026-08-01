@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Medical Report | MedAssist AI</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📄 Upload Medical Report</h1>
+
+        <!-- Success / Error Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: green; font-weight: bold;">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Report Title"
+                required>
+
+            <br><br>
+
+            <input
+                type="file"
+                name="pdf"
+                accept=".pdf"
+                required>
+
+            <br><br>
+
+            <button type="submit">
+                Upload PDF
+            </button>
+
+        </form>
+        {% if text %}
+
+<hr>
+
+<h2>📄 Extracted Text</h2>
+
+<div style="
+background:#f4f4f4;
+padding:20px;
+border-radius:10px;
+white-space:pre-wrap;
+max-height:500px;
+overflow:auto;
+">
+
+{{ text }}
+
+</div>
+
+{% endif %}
+
+    </div>
+
+</body>
+
+</html>

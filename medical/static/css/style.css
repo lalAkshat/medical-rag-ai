@@ -1,0 +1,361 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:linear-gradient(135deg,#eef7ff,#dff6ff,#ffffff);
+
+    color:#222;
+
+    overflow-x:hidden;
+
+}
+
+
+/* ===========================
+   REUSABLE
+=========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+section{
+
+    padding:90px 8%;
+
+}
+
+h1,h2,h3{
+
+    font-weight:700;
+
+}
+
+p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+button{
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+}
+/* ===========================
+   NAVBAR
+=========================== */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 8%;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,.75);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#0f4c81;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+}
+
+nav ul li{
+
+    margin:0 18px;
+
+}
+
+nav ul li a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#0f4c81;
+
+}
+
+.nav-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.login-btn{
+
+    background:transparent;
+
+    border:2px solid #0f4c81;
+
+    color:#0f4c81;
+
+    padding:12px 26px;
+
+    border-radius:50px;
+
+}
+
+.login-btn:hover{
+
+    background:#0f4c81;
+
+    color:white;
+
+}
+
+.register-btn{
+
+    background:#0f4c81;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:50px;
+
+}
+
+.register-btn:hover{
+
+    background:#1565c0;
+
+}
+/* ==========================
+   REGISTER PAGE
+========================== */
+
+.register-container{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#dfefff,#f5fbff);
+
+}
+
+.register-box{
+
+    width:420px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.register-box h1{
+
+    color:#0f4c81;
+
+    margin-bottom:10px;
+
+}
+
+.register-box p{
+
+    margin-bottom:25px;
+
+    color:#666;
+
+}
+
+.register-box form{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.register-box input{
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+}
+
+.register-box input:focus{
+
+    outline:none;
+
+    border:2px solid #0f4c81;
+
+}
+
+.register-box button{
+
+    background:#0f4c81;
+
+    color:white;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+.register-box button:hover{
+
+    background:#1565c0;
+
+}
+
+.login-link{
+
+    margin-top:20px;
+
+    text-align:center;
+
+}
+
+.login-link a{
+
+    text-decoration:none;
+
+    color:#0f4c81;
+
+    font-weight:600;
+
+}
+.login-btn,
+.register-btn{
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.login-btn{
+    border: 2px solid #0f4c81;
+    color: #0f4c81;
+    background: transparent;
+}
+
+.login-btn:hover{
+    background: #0f4c81;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.register-btn{
+    background: #0f4c81;
+    color: white;
+    border: 2px solid #0f4c81;
+}
+
+.register-btn:hover{
+    background: #1565c0;
+    border-color: #1565c0;
+    transform: translateY(-3px);
+}

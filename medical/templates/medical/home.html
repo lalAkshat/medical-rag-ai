@@ -1,0 +1,356 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MedAssist AI | Intelligent Medical RAG Assistant</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+
+        🩺 MedAssist AI
+
+    </div>
+
+    <ul>
+
+        <li><a href="{% url 'home' %}">Home</a></li>
+
+        <li><a href="{% url 'upload' %}">Upload PDF</a></li>
+
+        <li><a href="{% url 'reports' %}">My Reports</a></li>
+
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-left">
+
+        <span class="tag">
+
+            AI Powered Medical Assistant
+
+        </span>
+
+        <h3>
+
+            Welcome, {{ request.user.first_name }}
+
+        </h3>
+
+        <h1>
+
+            Intelligent Medical RAG Assistant
+
+        </h1>
+
+        <p>
+
+            Upload your medical reports and ask AI anything.
+            MedAssist AI reads your PDFs using Retrieval-Augmented
+            Generation (RAG) and gives accurate answers instantly.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'upload' %}" class="primary-btn">
+
+                📄 Upload PDF
+
+            </a>
+
+            <a href="{% url 'reports' %}" class="secondary-btn">
+
+                🤖 My Reports
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+        <img
+        src="https://placehold.co/550x500?text=Medical+AI"
+        alt="Medical AI">
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <h2>
+
+        Why Choose MedAssist AI?
+
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>
+
+                📄 Upload Reports
+
+            </h3>
+
+            <p>
+
+                Upload prescriptions, blood reports,
+                MRI, X-Ray and other medical documents.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                🤖 AI Chat
+
+            </h3>
+
+            <p>
+
+                Ask questions from your uploaded reports
+                and receive intelligent answers.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                💬 Chat History
+
+            </h3>
+
+            <p>
+
+                Every AI conversation is saved for future use.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+
+                🔒 Secure
+
+            </h3>
+
+            <p>
+
+                Your medical reports remain safe and private.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat-box">
+
+        <h2>📄</h2>
+
+        <h3>Unlimited</h3>
+
+        <p>Medical Reports</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>🤖</h2>
+
+        <h3>24/7</h3>
+
+        <p>AI Assistant</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>⚡</h2>
+
+        <h3>Instant</h3>
+
+        <p>Answers</p>
+
+    </div>
+
+    <div class="stat-box">
+
+        <h2>🔐</h2>
+
+        <h3>100%</h3>
+
+        <p>Secure</p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="workflow">
+
+    <h2>
+
+        How It Works
+
+    </h2>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <h3>
+
+                1️⃣ Upload PDF
+
+            </h3>
+
+        </div>
+
+        <div class="step">
+
+            <h3>
+
+                2️⃣ AI Reads Report
+
+            </h3>
+
+        </div>
+
+        <div class="step">
+
+            <h3>
+
+                3️⃣ Ask Questions
+
+            </h3>
+
+        </div>
+
+        <div class="step">
+
+            <h3>
+
+                4️⃣ Get Accurate Answers
+
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CTA ================= -->
+
+<section class="features">
+
+    <h2>
+
+        Ready to Analyze Your Medical Reports?
+
+    </h2>
+
+    <br>
+
+    <a href="{% url 'upload' %}" class="primary-btn">
+
+        🚀 Upload Your First Report
+
+    </a>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>
+
+        🩺 MedAssist AI
+
+    </h2>
+
+    <p>
+
+        Intelligent Medical RAG Assistant
+
+    </p>
+
+    <p>
+
+        Powered by Django + OpenRouter AI + PyMuPDF
+
+    </p>
+
+    <p>
+
+        © 2026 All Rights Reserved
+
+    </p>
+
+</footer>
+
+</body>
+
+</html>
