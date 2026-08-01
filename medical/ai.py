@@ -1,115 +1,71 @@
-from pathlib import Path
 import os
+import requests
 from dotenv import load_dotenv
 
-# Base Directory
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Load .env
 load_dotenv()
 
-# Security
-SECRET_KEY = os.getenv("django-insecure-ir@yc(-wqu-stx=p4(-92=be!akb_2h&ucz(_l&y)k6mh=*xe%")
+API_KEY = os.getenv("OPENROUTER_API_KEY")
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
+URL = "https://openrouter.ai/api/v1/chat/completions"
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    ".onrender.com",
-]
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com",
-]
+def ask_ai(question, context):
 
-# Application definition
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "medical",
-]
+    prompt = f"""
+You are a professional AI Medical Assistant.
 
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+Answer ONLY from the uploaded medical report.
 
-ROOT_URLCONF = "config.urls"
+If the answer is not present in the report, reply:
 
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
+"I could not find this information in the uploaded medical report."
 
-WSGI_APPLICATION = "config.wsgi.application"
+Medical Report:
+{context}
 
-# Database
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+User Question:
+{question}
+"""
+
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://medical-rag-ai-lyvg.onrender.com",
+        "X-Title": "Medical RAG AI"
     }
-}
 
-# Password Validation
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+    data = {
+        "model": "openai/gpt-oss-20b:free",
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        "temperature": 0.3,
+        "max_tokens": 1000
+    }
 
-# Internationalization
-LANGUAGE_CODE = "en-us"
+    try:
 
-TIME_ZONE = "UTC"
+        response = requests.post(
+            URL,
+            headers=headers,
+            json=data,
+            timeout=60
+        )
 
-USE_I18N = True
-USE_TZ = True
+        response.raise_for_status()
 
-# Static Files
-STATIC_URL = "/static/"
+        result = response.json()
 
-STATICFILES_DIRS = [
-    BASE_DIR / "medical" / "static",
-]
+        if "choices" in result:
+            return result["choices"][0]["message"]["content"]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+        if "error" in result:
+            return result["error"]["message"]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        return "No response from AI."
 
-# Media Files
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
-# Default Primary Key
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+    except Exception as e:
+        return str(e)
